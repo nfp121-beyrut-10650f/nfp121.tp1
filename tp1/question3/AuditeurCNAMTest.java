@@ -66,17 +66,17 @@ public class AuditeurCNAMTest extends junit.framework.TestCase {
 
     /** Un test de la méthode toString(). */
     public void test_toString() {
-        question3.AuditeurCNAM auditeur1 = new question3.AuditeurCNAM("Dupont",
-                "paul", "03-1234");
-        assertEquals("Dupont paul login : dupont_p", auditeur1.toString());
+        question3.AuditeurCNAM auditeur1 = new question3.AuditeurCNAM("M*riam%$",
+                "DAHER", "10650f");
+        assertEquals("M*riam%$ DAHER login : m_riam_d", auditeur1.toString());
     }
 
     public void test_nom_court() {
-        question3.AuditeurCNAM auditeur1 = new question3.AuditeurCNAM("paul",
-                "pierre", "12345");
-        assertEquals("paul", auditeur1.nom());
-        assertEquals("pierre", auditeur1.prenom());
-        assertEquals("paul_p", auditeur1.login());
+        question3.AuditeurCNAM auditeur1 = new question3.AuditeurCNAM("ran&a",
+                "Ajaj", "12345");
+        assertEquals("ran&a", auditeur1.nom());
+        assertEquals("Ajaj", auditeur1.prenom());
+        assertEquals("ran_a_a", auditeur1.login());
     }
 
     public void test_nom_court_bis() {
@@ -122,4 +122,17 @@ public class AuditeurCNAMTest extends junit.framework.TestCase {
         assertEquals(" nom avec accent (é devient e) ? ", "chloe_c",
             auditeur1.login());
     }
+     
+    public void test_pour_un_caractere() {
+        question3.AuditeurCNAM auditeur1 = new question3.AuditeurCNAM("M@riam",
+                "Daher", "10650f");
+        assertEquals(" Mariam Daher ", "M@riam", auditeur1.nom());
+        assertEquals(" Mariam Daher ", "Daher", auditeur1.prenom());
+        assertEquals(" nom avec caractere (@ devient _) ? ", "m_riam_d",
+            auditeur1.login());
+        System.out.println("Running: test_pour_un_caractere ");
+    }
+    
+    
+    
 }
